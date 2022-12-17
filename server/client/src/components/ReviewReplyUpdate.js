@@ -14,7 +14,7 @@ import EditIcon from "@mui/icons-material/Edit";
 
 import { useState, useEffect } from "react";
 const ReviewReplyUpdate = (props) => {
-  const [updated, setUpdated] = useState();
+  const [updated, setUpdated] = useState("");
 
   const [open, setOpen] = useState(false);
   useEffect(() => {}, [setUpdated]);
@@ -65,12 +65,17 @@ const ReviewReplyUpdate = (props) => {
             margin="dense"
             id="name"
             label="Review"
-            fullWidth
             variant="standard"
+            minRows="7"
+            multiline
+            fullwidth={true}
+            sx={{ width: 300 }}
+            inputProps={{ maxLength: 280 }}
             onChange={(e) => {
               setUpdated(e.target.value);
             }}
           />
+          <Typography>{updated.length}/280</Typography>
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>Cancel</Button>

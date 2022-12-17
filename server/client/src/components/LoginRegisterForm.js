@@ -10,8 +10,9 @@ import { AppContext } from "../App";
 import LoginIcon from "@mui/icons-material/Login";
 import { shadows } from "@mui/system";
 import AppRegistrationIcon from "@mui/icons-material/AppRegistration";
+import Fade from "react-reveal/Fade";
 import Checkbox from "@mui/material/Checkbox";
-
+import YearSelect from "./YearSelect";
 const LoginRegisterForm = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -24,7 +25,7 @@ const LoginRegisterForm = (props) => {
   const [customerContactEmail, setCustomerContactEmail] = useState("");
   const [customerContactPhone, setCustomerContactPhone] = useState("");
   const [about, setAbout] = useState("");
-
+  const [activeSince, setActiveSince] = useState("");
   const [categoryId, setCategoryId] = useState([]);
   const [categories, setCategories] = useState([]);
   const [locations, setLocations] = useState([]);
@@ -151,6 +152,7 @@ const LoginRegisterForm = (props) => {
             businessDescription: description,
             customerContactEmail: customerContactEmail,
             customerContactPhone: customerContactPhone,
+            activeSince: activeSince,
           },
           {
             withCredentials: true,
@@ -179,77 +181,118 @@ const LoginRegisterForm = (props) => {
           flexDirection: "column",
           justifyContent: "center",
           alignItems: "center",
-          width: "85vw",
+          minWidth: "40vw",
+          minHeight: "10vw",
+          backgroundColor: "white",
+          borderRadius: 9,
+          alignSelf: "center",
         }}
         noValidate
         autoComplete={"off"}
       >
-        {props.title === "Register" && (
-          <Box sx={{ minHeight: 300, display: "flex", justifyContent: "center", alignItems: "flex-end", m: 2 }}>
-            <Box sx={{ maxWidth: 600, maxHeight: 400 }}>
-              <AppRegistrationIcon sx={{ color: "black" }} />
-              <Typography variant="h4" color="black" sx={{ padding: 1, marginBottom: 1 }}>
-                {props.title}
-              </Typography>
-              <TextField
-                required
-                sx={{ m: 1 }}
-                id="fname"
-                label="Enter First Name"
-                variant="outlined"
-                onChange={(e) => setFname(e.target.value)}
-              />
-              <TextField
-                required
-                sx={{ m: 1 }}
-                id="lname"
-                label="Enter Last Name"
-                variant="outlined"
-                onChange={(e) => setLname(e.target.value)}
-              />
-
-              <TextField
-                required
-                sx={{ m: 1 }}
-                id="email"
-                label="Enter Email"
-                variant="outlined"
-                onChange={(e) => setEmail(e.target.value)}
-              />
-              <TextField
-                required
-                sx={{ m: 1 }}
-                id="about"
-                label="About yourself/Quote"
-                variant="outlined"
-                onChange={(e) => setAbout(e.target.value)}
-              />
-              <TextField
-                required
-                sx={{ m: 1 }}
-                id="password"
-                label="Enter Password"
-                variant="outlined"
-                onChange={(e) => setPassword(e.target.value)}
-                type={checked ? "text" : "password"}
-              />
-              <FormControlLabel control={<Checkbox />} label="Show Password" checked={checked} onChange={handleChange} sx={{ m: 2 }} />
-            </Box>
-          </Box>
-        )}
-        {props.title === "Login" && (
+        <Fade big>
           <Box>
-            <Box sx={{ display: "flex", flexDirection: "column", m: 2 }}>
+            {props.title === "Register" && (
+              <Box sx={{ minHeight: 300, display: "flex", justifyContent: "center", alignItems: "flex-end", m: 2 }}>
+                <Box sx={{ maxWidth: 600, maxHeight: 400 }}>
+                  <AppRegistrationIcon sx={{ color: "black" }} />
+                  <Typography variant="h4" color="black" sx={{ padding: 1, marginBottom: 1 }}>
+                    {props.title}
+                  </Typography>
+                  <TextField
+                    required
+                    sx={{ m: 1 }}
+                    id="fname"
+                    label="Enter First Name"
+                    variant="outlined"
+                    onChange={(e) => setFname(e.target.value)}
+                  />
+                  <TextField
+                    required
+                    sx={{ m: 1 }}
+                    id="lname"
+                    label="Enter Last Name"
+                    variant="outlined"
+                    onChange={(e) => setLname(e.target.value)}
+                  />
+
+                  <TextField
+                    required
+                    sx={{ m: 1 }}
+                    id="email"
+                    label="Enter Email"
+                    variant="outlined"
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
+                  <TextField
+                    required
+                    sx={{ m: 1 }}
+                    id="about"
+                    label="About yourself/Quote"
+                    variant="outlined"
+                    onChange={(e) => setAbout(e.target.value)}
+                  />
+                  <TextField
+                    required
+                    sx={{ m: 1 }}
+                    id="password"
+                    label="Enter Password"
+                    variant="outlined"
+                    onChange={(e) => setPassword(e.target.value)}
+                    type={checked ? "text" : "password"}
+                  />
+                  <FormControlLabel control={<Checkbox />} label="Show Password" checked={checked} onChange={handleChange} sx={{ m: 2 }} />
+                </Box>
+              </Box>
+            )}
+            {props.title === "Login" && (
               <Box>
-                <LoginIcon sx={{ color: "black " }} />
-                <Typography variant="h4" color="black" sx={{ padding: 1, marginBottom: 3 }}>
+                <Box sx={{ display: "flex", flexDirection: "column", m: 2 }}>
+                  <Box>
+                    <LoginIcon sx={{ color: "black " }} />
+                    <Typography variant="h4" color="black" sx={{ padding: 1, marginBottom: 3 }}>
+                      {props.title}
+                    </Typography>
+                  </Box>
+                  <Box>
+                    <TextField
+                      required
+                      sx={{ m: 1, border: "#73BAB1", color: "#73BAB1" }}
+                      id="email"
+                      label="Enter Email"
+                      variant="outlined"
+                      onChange={(e) => setEmail(e.target.value)}
+                    />
+                    <TextField
+                      required
+                      sx={{ m: 1 }}
+                      id="password"
+                      label="Enter Password"
+                      variant="outlined"
+                      onChange={(e) => setPassword(e.target.value)}
+                      type={checked ? "text" : "password"}
+                    />
+
+                    <FormControlLabel
+                      control={<Checkbox />}
+                      label="Show Password"
+                      checked={checked}
+                      onChange={handleChange}
+                      sx={{ m: 2 }}
+                    />
+                  </Box>
+                </Box>
+              </Box>
+            )}
+            {props.title === "Business Login" && (
+              <Box>
+                <LoginIcon />
+                <Typography variant="h4" color="black" sx={{ padding: 1, marginBottom: 2 }}>
                   {props.title}
                 </Typography>
-              </Box>
-              <Box>
                 <TextField
                   required
-                  sx={{ m: 1, border: "#73BAB1", color: "#73BAB1" }}
+                  sx={{ m: 1 }}
                   id="email"
                   label="Enter Email"
                   variant="outlined"
@@ -261,243 +304,255 @@ const LoginRegisterForm = (props) => {
                   id="password"
                   label="Enter Password"
                   variant="outlined"
-                  onChange={(e) => setPassword(e.target.value)}
                   type={checked ? "text" : "password"}
+                  onChange={(e) => setPassword(e.target.value)}
                 />
-
                 <FormControlLabel control={<Checkbox />} label="Show Password" checked={checked} onChange={handleChange} sx={{ m: 2 }} />
               </Box>
-            </Box>
-          </Box>
-        )}
-        {props.title === "Business Login" && (
-          <Box>
-            <LoginIcon />
-            <Typography variant="h4" color="black" sx={{ padding: 1, marginBottom: 2 }}>
-              {props.title}
-            </Typography>
-            <TextField
-              required
-              sx={{ m: 1 }}
-              id="email"
-              label="Enter Email"
-              variant="outlined"
-              onChange={(e) => setEmail(e.target.value)}
-            />
-            <TextField
-              required
-              sx={{ m: 1 }}
-              id="password"
-              label="Enter Password"
-              variant="outlined"
-              type={checked ? "text" : "password"}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-            <FormControlLabel control={<Checkbox />} label="Show Password" checked={checked} onChange={handleChange} sx={{ m: 2 }} />
-          </Box>
-        )}
-        {props.title === "Register Business" && (
-          <Box sx={{ display: "flex", flexDirection: "row", justifyContent: "center", alignItems: "center", flexWrap: "wrap" }}>
-            <Box sx={{ m: 1, minHeight: 300, alignSelf: "center" }}>
-              <AppRegistrationIcon />
-              <Typography variant="h4">{props.title}</Typography>
-              <Box>
-                <TextField
-                  required
-                  sx={{ m: 1 }}
-                  id="email"
-                  label="Enter Email"
-                  variant="outlined"
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-                <TextField
-                  required
-                  sx={{ m: 1 }}
-                  id="password"
-                  label="Password"
-                  variant="outlined"
-                  type={checked ? "text" : "password"}
-                  onChange={(e) => setPassword(e.target.value)}
-                />
-                <FormControlLabel control={<Checkbox />} label="Show Password" checked={checked} onChange={handleChange} sx={{ m: 1 }} />
+            )}
+            {props.title === "Register Business" && (
+              <Box sx={{ display: "flex", flexDirection: "row", justifyContent: "center", alignItems: "center", flexWrap: "wrap" }}>
+                <Box sx={{ m: 1, minHeight: 300, alignSelf: "center" }}>
+                  <AppRegistrationIcon />
+                  <Typography variant="h4" sx={{ padding: 2 }}>
+                    {props.title}
+                  </Typography>
+                  <Box sx={{ padding: 1 }}>
+                    <TextField
+                      required
+                      sx={{ m: 1 }}
+                      id="email"
+                      label="Enter Email"
+                      variant="outlined"
+                      onChange={(e) => setEmail(e.target.value)}
+                    />
+                    <TextField
+                      required
+                      sx={{ m: 1 }}
+                      id="password"
+                      label="Password"
+                      variant="outlined"
+                      type={checked ? "text" : "password"}
+                      onChange={(e) => setPassword(e.target.value)}
+                    />
+                    <FormControlLabel
+                      control={<Checkbox />}
+                      label="Show Password"
+                      checked={checked}
+                      onChange={handleChange}
+                      sx={{ m: 1 }}
+                    />
+                  </Box>
+                  <Box sx={{ padding: 2 }}>
+                    <TextField
+                      required
+                      sx={{ m: 1 }}
+                      id="businessName"
+                      label="Business Name"
+                      variant="outlined"
+                      onChange={(e) => setbusinessName(e.target.value)}
+                    />
+                    <TextField
+                      required
+                      sx={{ m: 1 }}
+                      id="phone"
+                      label="Contact Phone Number"
+                      variant="outlined"
+                      onChange={(e) => setCustomerContactPhone(e.target.value)}
+                    />
+                  </Box>
+
+                  <TextField
+                    required
+                    sx={{ m: 1, p: 1 }}
+                    id="customerEmail"
+                    label="Contact Email"
+                    variant="outlined"
+                    onChange={(e) => setCustomerContactEmail(e.target.value)}
+                  />
+                </Box>
+
+                <Box sx={{ display: "flex", flexDirection: "column", minWidth: "35vw", padding: 2 }}>
+                  <YearSelect setActiveSince={setActiveSince} />
+                  <select
+                    required
+                    onChange={(e) => setCategoryId(e.target.value)}
+                    style={{ height: 50, backgroundColor: "transparent", borderRadius: 5 }}
+                  >
+                    <option value="" disabled selected>
+                      Category *
+                    </option>
+                    {categories &&
+                      categories.length > 0 &&
+                      categories.map((item) => {
+                        return <option value={item.category_id}>{item.category}</option>;
+                      })}
+                  </select>
+                  <select
+                    onChange={(e) => setLocationId(e.target.value)}
+                    required
+                    style={{ height: 50, backgroundColor: "transparent", borderRadius: 5 }}
+                  >
+                    <option value="" disabled selected>
+                      Location *
+                    </option>
+                    {locations &&
+                      locations.length > 1 &&
+                      locations.map((item) => {
+                        return <option value={item.location_id}>{item.location_name}</option>;
+                      })}
+                  </select>
+
+                  <TextField
+                    required
+                    minRows="18"
+                    maxRows="20"
+                    sx={{ m: 1 }}
+                    id="description"
+                    label="Business Description"
+                    variant="outlined"
+                    multiline
+                    fullwidth={true}
+                    onChange={(e) => setDescription(e.target.value)}
+                  />
+                </Box>
               </Box>
-              <Box>
-                <TextField
-                  required
-                  sx={{ m: 1 }}
-                  id="businessName"
-                  label="Business Name"
-                  variant="outlined"
-                  onChange={(e) => setbusinessName(e.target.value)}
-                />
-                <TextField
-                  required
-                  sx={{ m: 1 }}
-                  id="phone"
-                  label="Contact Phone Number"
-                  variant="outlined"
-                  onChange={(e) => setCustomerContactPhone(e.target.value)}
-                />
-              </Box>
-
-              <TextField
-                required
-                sx={{ m: 1 }}
-                id="customerEmail"
-                label="Contact Email"
-                variant="outlined"
-                onChange={(e) => setCustomerContactEmail(e.target.value)}
-              />
-            </Box>
-
-            <Box sx={{ display: "flex", flexDirection: "column", minWidth: "35vw" }}>
-              <select
-                required
-                onChange={(e) => setCategoryId(e.target.value)}
-                style={{ height: 50, backgroundColor: "transparent", border: "none" }}
+            )}
+            {props.title === "Login" && (
+              <Button
+                variant="contained"
+                sx={{
+                  backgroundColor: "#73BAB1",
+                  "&:hover": {
+                    color: "black",
+                    backgroundColor: "#73BAB1",
+                  },
+                }}
+                onClick={handleClick}
+                disabled={email.length === 0 || password.length === 0 ? true : false}
               >
-                <option value="" disabled selected>
-                  Category *
-                </option>
-                {categories.length > 1 &&
-                  categories.map((item) => {
-                    return <option value={item.category_id}>{item.category}</option>;
-                  })}
-              </select>
-              <select
-                onChange={(e) => setLocationId(e.target.value)}
-                required
-                style={{ height: 50, backgroundColor: "transparent", border: "none" }}
+                {props.title}
+              </Button>
+            )}
+            {props.title === "Business Login" && (
+              <Button
+                sx={{
+                  m: 2,
+                  backgroundColor: "#73BAB1",
+                  "&:hover": {
+                    color: "black",
+                    backgroundColor: "#73BAB1",
+                  },
+                }}
+                variant="contained"
+                onClick={handleClick}
+                disabled={email.length === 0 || password.length === 0 ? true : false}
               >
-                <option value="" disabled selected>
-                  Location *
-                </option>
-                {locations.length > 1 &&
-                  locations.map((item) => {
-                    return <option value={item.location_id}>{item.location_name}</option>;
-                  })}
-              </select>
+                {props.title}
+              </Button>
+            )}
 
-              <TextField
-                required
-                minRows="18"
-                maxRows="20"
-                sx={{ m: 1 }}
-                id="description"
-                label="Business Description"
-                variant="outlined"
-                multiline
-                fullwidth={true}
-                onChange={(e) => setDescription(e.target.value)}
-              />
-            </Box>
+            {props.title === "Register" && (
+              <Button
+                sx={{
+                  m: 2,
+                  backgroundColor: "#52ab98",
+                  "&:hover": {
+                    color: "black",
+                    backgroundColor: "#52ab98",
+                  },
+                }}
+                variant="contained"
+                onClick={handleClick}
+                disabled={fname.length === 0 || lname.length === 0 || email.length === 0 || password.length === 0 ? true : false}
+              >
+                {props.title}
+              </Button>
+            )}
+            {props.title === "Register Business" && (
+              <Button
+                variant="contained"
+                sx={{
+                  m: 2,
+                  backgroundColor: "#52ab98",
+                  "&:hover": {
+                    color: "black",
+                    backgroundColor: "#52ab98",
+                  },
+                }}
+                onClick={handleClick}
+                disabled={
+                  email.length === 0 ||
+                  password.length === 0 ||
+                  businessName.length === 0 ||
+                  description.length === 0 ||
+                  customerContactPhone.length === 0 ||
+                  customerContactEmail.length === 0 ||
+                  categoryId.length === 0 ||
+                  locationId.length === 0 ||
+                  activeSince.length === 0
+                    ? true
+                    : false
+                }
+              >
+                {props.title}
+              </Button>
+            )}
+
+            {props.title === "Login" && (
+              <Button
+                sx={{ m: 2 }}
+                onClick={() => {
+                  setEmail("");
+                  setPassword("");
+                }}
+              >
+                <Link style={{ color: "black", textDecoration: "none" }} to="/businesslogin">
+                  Business Login
+                </Link>
+              </Button>
+            )}
+            {props.title === "Business Login" && (
+              <Button
+                sx={{ m: 2 }}
+                onClick={() => {
+                  setEmail("");
+                  setPassword("");
+                }}
+              >
+                <Link style={{ color: "black", textDecoration: "none" }} to="/login">
+                  User Login
+                </Link>
+              </Button>
+            )}
+            {props.title === "Register" && (
+              <Button
+                onClick={() => {
+                  setEmail("");
+                  setPassword("");
+                }}
+                sx={{ m: 2 }}
+              >
+                <Link style={{ textDecoration: "none", color: "black" }} to="/registerbusiness">
+                  Register New Business
+                </Link>
+              </Button>
+            )}
+            {props.title === "Register Business" && (
+              <Button
+                onClick={() => {
+                  setEmail("");
+                  setPassword("");
+                }}
+              >
+                <Link style={{ textDecoration: "none", color: "black" }} to="/register">
+                  User Register
+                </Link>
+              </Button>
+            )}
+            <p>{msg}</p>
           </Box>
-        )}
-        {props.title === "Login" && (
-          <Button
-            variant="contained"
-            sx={{ backgroundColor: "#73BAB1" }}
-            onClick={handleClick}
-            disabled={email.length === 0 || password.length === 0 ? true : false}
-          >
-            {props.title}
-          </Button>
-        )}
-        {props.title === "Business Login" && (
-          <Button
-            sx={{ m: 2, backgroundColor: "#73BAB1" }}
-            variant="contained"
-            onClick={handleClick}
-            disabled={email.length === 0 || password.length === 0 ? true : false}
-          >
-            {props.title}
-          </Button>
-        )}
-
-        {props.title === "Register" && (
-          <Button
-            sx={{ m: 2, backgroundColor: "#52ab98" }}
-            variant="contained"
-            onClick={handleClick}
-            disabled={fname.length === 0 || lname.length === 0 || email.length === 0 || password.length === 0 ? true : false}
-          >
-            {props.title}
-          </Button>
-        )}
-        {props.title === "Register Business" && (
-          <Button
-            variant="contained"
-            sx={{ m: 2, backgroundColor: "#52ab98" }}
-            onClick={handleClick}
-            disabled={
-              email.length === 0 ||
-              password.length === 0 ||
-              businessName.length === 0 ||
-              description.length === 0 ||
-              customerContactPhone.length === 0 ||
-              customerContactEmail.length === 0 ||
-              categoryId.length === 0 ||
-              locationId.length === 0
-                ? true
-                : false
-            }
-          >
-            {props.title}
-          </Button>
-        )}
-
-        {props.title === "Login" && (
-          <Button
-            sx={{ m: 2 }}
-            onClick={() => {
-              setEmail("");
-              setPassword("");
-            }}
-          >
-            <Link style={{ color: "white", textDecoration: "none" }} to="/businesslogin">
-              Business Login
-            </Link>
-          </Button>
-        )}
-        {props.title === "Business Login" && (
-          <Button
-            sx={{ m: 2 }}
-            onClick={() => {
-              setEmail("");
-              setPassword("");
-            }}
-          >
-            <Link style={{ color: "white", textDecoration: "none" }} to="/login">
-              User Login
-            </Link>
-          </Button>
-        )}
-        {props.title === "Register" && (
-          <Button
-            onClick={() => {
-              setEmail("");
-              setPassword("");
-            }}
-            sx={{ m: 2 }}
-          >
-            <Link style={{ textDecoration: "none", color: "white" }} to="/registerbusiness">
-              Register New Business
-            </Link>
-          </Button>
-        )}
-        {props.title === "Register Business" && (
-          <Button
-            onClick={() => {
-              setEmail("");
-              setPassword("");
-            }}
-          >
-            <Link style={{ textDecoration: "none", color: "white" }} to="/register">
-              User Register
-            </Link>
-          </Button>
-        )}
-        <p>{msg}</p>
+        </Fade>
       </Box>
     </Box>
   );

@@ -31,28 +31,33 @@ export default function ReviewCards(props) {
   }, [clicked, props.reviews]);
 
   return (
-    <div style={{ width: "100vw", display: "flex", flexDirection: "column" }}>
-      <Box sx={{ display: "flex", flexWrap: "wrap", justifyContent: "center" }}>
+    <div style={{ display: "flex", flexDirection: "column", marginLeft: 10, width: "100vw" }}>
+      <Box sx={{ display: "flex", flexWrap: "wrap", justifyContent: "flex-start" }}>
         {a.length > 0 &&
           a.map((review) => {
             return (
               <Fade bottom cascade>
                 {" "}
                 <Card
+                  id="reviewCard"
                   sx={{
-                    width: 400,
-                    height: 260,
+                    width: "65vw",
+                    minHeight: 260,
                     m: 1,
                     display: "flex",
                     flexDirection: "column",
                     justifyContent: "center",
                     alignContent: "flex-start",
                     alignItems: "flex-start",
-                    borderRadius: 10,
+                    border: "none",
+                    boxShadow: "none",
+                    borderTop: "1px solid grey",
+                    borderRadius: 0,
                   }}
                 >
                   <CardHeader
-                    style={{ display: "flex", flexDirection: "row", justifyContent: "space-between", width: 400, padding: 10 }}
+                    id="cardHeader"
+                    style={{ display: "flex", flexDirection: "row", justifyContent: "space-between", maxWidth: 400, padding: 10 }}
                     avatar={
                       <Avatar sx={{ m: 1, bgcolor: "#73BAB1", width: "60px", height: "60px" }} aria-label="recipe">
                         {review.user.fname.charAt(0).toUpperCase()}
@@ -63,7 +68,7 @@ export default function ReviewCards(props) {
                       review.review_reply ? (
                         <ReviewReplyDialog business_name={props.business_name} review_reply={review.review_reply} />
                       ) : (
-                        <Button variant="contained" disabled sx={{ backgroundColor: "#2b6777 ", marginTop: 2 }}>
+                        <Button variant="contained" disabled sx={{ backgroundColor: "#2b6777 ", marginTop: 2, marginLeft: 2 }}>
                           No Reply Yet
                         </Button>
                       )

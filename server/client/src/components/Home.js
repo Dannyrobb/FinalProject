@@ -36,7 +36,7 @@ const Home = (props) => {
   }, []);
 
   return (
-    <Box sx={{ minHeight: "70vh" }}>
+    <Box sx={{ minHeight: "70vh", width: "99.1vw" }}>
       <Slider />
 
       <Typography variant="h3" sx={{ color: "white", paddingTop: "100px", textDecoration: "underline #52ab98" }}>
@@ -63,21 +63,23 @@ const Home = (props) => {
                       <Box
                         key={item.id}
                         sx={{
-                          maxWidth: 400,
-                          minWidth: 400,
-                          height: 280,
-                          m: 2,
-                          boxShadow: 3,
-                          overflow: "hidden",
-                          backgroundColor: "white",
-                          borderRadius: 1,
-                          postition: "relative",
+                          width: 400,
+                          height: 290,
+                          m: 3,
                           borderRadius: 9,
+                          backgroundColor: "white",
                         }}
                       >
                         <Typography
                           variant="h5"
-                          sx={{ textDecoration: "none", color: "black" }}
+                          sx={{
+                            color: "black",
+                            textDecoration: "none",
+                            "&:hover": {
+                              color: "black",
+                            },
+                            margin: 1,
+                          }}
                           component={Link}
                           to={`/business/${item.id}`}
                         >
@@ -96,7 +98,9 @@ const Home = (props) => {
                             />
                           </Typography>
                         ) : (
-                          <Typography varient="p">No Ratings Yet...</Typography>
+                          <Typography varient="p" sx={{ margin: 1 }}>
+                            No Ratings Yet...
+                          </Typography>
                         )}
                         <Typography sx={{ color: "black" }} varient="p" component={Link} to={`/locations/${item.location.location_id}`}>
                           {item.location.location_name}
@@ -105,12 +109,16 @@ const Home = (props) => {
                           sx={{
                             display: "flex",
                             flexDirection: "column",
-
+                            justifyContent: "center",
                             alignContent: "center",
-                            height: "170px",
+                            maxHeight: "170px",
+                            minHeight: "100px",
                           }}
                         >
-                          <Typography variant={item.businesse_description.length > 40 ? " subtitle2" : "h5"} sx={{ overflow: "hidden" }}>
+                          <Typography
+                            variant={item.businesse_description.length > 40 ? " subtitle2" : "h5"}
+                            sx={{ overflow: "hidden", padding: 2 }}
+                          >
                             {item.businesse_description}
                           </Typography>
                           <IconButton component={Link} to={`/business/${item.id}`} sx={{ position: "absolute", left: 0, bottom: 0 }}>

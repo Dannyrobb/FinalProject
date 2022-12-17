@@ -5,6 +5,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { Rating } from "@mui/material";
 import Box from "@mui/material/Box";
+import Fade from "react-reveal/Fade";
 
 import CircularProgress from "@mui/material/CircularProgress";
 
@@ -54,47 +55,52 @@ const LocationsPage = (props) => {
         {businesses
           ? businesses.map((item) => {
               return (
-                <Box
-                  key={item.id}
-                  sx={{
-                    width: 400,
-                    height: 280,
-                    boxShadow: 3,
-                    m: 3,
-                    overflow: "hidden",
-                    backgroundColor: "#52ab98",
-                    borderRadius: 4,
-                  }}
-                >
-                  <Typography variant="h5" sx={{ textDecoration: "none", color: "white" }} component={Link} to={`/business/${item.id}`}>
-                    {item.businesse_name}
-                  </Typography>
+                <Fade big>
+                  <Box
+                    key={item.id}
+                    sx={{
+                      width: 400,
+                      height: 280,
+                      boxShadow: 3,
+                      m: 3,
+                      overflow: "hidden",
+                      backgroundColor: "#52ab98",
+                      borderRadius: 4,
+                    }}
+                  >
+                    <Typography variant="h5" sx={{ textDecoration: "none", color: "white" }} component={Link} to={`/business/${item.id}`}>
+                      {item.businesse_name}
+                    </Typography>
 
-                  {item.reviews.length > 0 ? (
-                    <Typography variant="h5">
-                      <Rating
-                        name="read-only"
-                        value={item.reviews.reduce((accumulator, object) => {
-                          return accumulator + object.rating / item.reviews.length;
-                        }, 0)}
-                        readOnly
-                        size="small"
-                      />
+                    {item.reviews.length > 0 ? (
+                      <Typography variant="h5">
+                        <Rating
+                          name="read-only"
+                          value={item.reviews.reduce((accumulator, object) => {
+                            return accumulator + object.rating / item.reviews.length;
+                          }, 0)}
+                          readOnly
+                          size="small"
+                        />
+                      </Typography>
+                    ) : (
+                      <Typography varient="p">No Ratings Yet!...</Typography>
+                    )}
+                    <Typography sx={{ color: "black" }} variant="p" component={Link} to={`/locations/${item.location.location_id}`}>
+                      {item.location.location_name}
                     </Typography>
-                  ) : (
-                    <Typography varient="p">No Ratings Yet!...</Typography>
-                  )}
-                  <Typography sx={{ color: "black" }} variant="p" component={Link} to={`/locations/${item.location.location_id}`}>
-                    {item.location.location_name}
-                  </Typography>
-                  <br />
-                  <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center", height: 100 }}>
-                    {" "}
-                    <Typography variant={item.businesse_description.length > 50 ? "body-2" : "h5"} sx={{ maxHeight: 100, color: "white" }}>
-                      {item.businesse_description}
-                    </Typography>
+                    <br />
+                    <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center", height: 100 }}>
+                      {" "}
+                      <Typography
+                        variant={item.businesse_description.length > 50 ? "body-2" : "h5"}
+                        sx={{ maxHeight: 100, color: "white" }}
+                      >
+                        {item.businesse_description}
+                      </Typography>
+                    </Box>
                   </Box>
-                </Box>
+                </Fade>
               );
             })
           : "loading"}

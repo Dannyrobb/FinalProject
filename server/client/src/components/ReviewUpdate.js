@@ -13,7 +13,7 @@ import { useState, useEffect } from "react";
 import EditIcon from "@mui/icons-material/Edit";
 import IconButton from "@mui/material/IconButton";
 const ReviewUpdate = (props) => {
-  const [updated, setUpdated] = useState();
+  const [updated, setUpdated] = useState("");
   const [rating, setRating] = useState();
 
   const [open, setOpen] = useState(false);

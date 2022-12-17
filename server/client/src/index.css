@@ -21,3 +21,69 @@ code {
   font-family: poppins;
 }
 
+
+
+@media only screen and (max-width: 1223px) {
+  #sizeItDown {
+    width: 800px;
+    height:auto;
+    
+  }
+
+}
+@media only screen and (max-width: 1223px) {
+  #busDesc {
+    width:100%
+    
+  }
+
+}
+
+@media only screen and (max-width: 1223px) {
+  #topCard,#contact{
+padding:20px
+  }
+
+}
+@media only screen and (max-width: 1223px) {
+  #contact {
+    align-self: center;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    align-content: center;
+    
+  }}
+
+  @media only screen and (max-width: 614px) {
+    #cardHeader{
+  display:"flex";
+  flex-direction: column;
+  flex-wrap: wrap;
+  width: fit-content;
+  
+    }
+  
+  }
+
+  @media only screen and (max-width: 614px) {
+ #reviewCard{
+  display:"flex";
+  flex-direction: column;
+  flex-wrap: wrap;
+ 
+  
+    }
+  
+  }
+
+
+  /* @media only screen and (max-width: 1223px) {
+    #contactBoxBottom{
+     margin-right:41px
+     
+       }
+     
+     } */
+   
+  
