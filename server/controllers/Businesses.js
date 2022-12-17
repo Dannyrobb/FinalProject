@@ -53,8 +53,17 @@ export const loginBusiness = async (req, res) => {
 };
 
 export const registerBusiness = async (req, res) => {
-  const { email, password, businessName, businessDescription, businessLocation, categoryId, customerContactEmail, customerContactPhone } =
-    req.body;
+  const {
+    email,
+    password,
+    businessName,
+    businessDescription,
+    businessLocation,
+    categoryId,
+    customerContactEmail,
+    customerContactPhone,
+    activeSince,
+  } = req.body;
   const salt = await bcrypt.genSalt();
   const hashPassword = await bcrypt.hash(password, salt);
 
@@ -68,6 +77,7 @@ export const registerBusiness = async (req, res) => {
       businesse_description: businessDescription,
       customer_contact_email: customerContactEmail,
       customer_contact_phone: customerContactPhone,
+      activeSince: activeSince,
     });
     res.json({ msg: "Registered successfully" });
   } catch (e) {

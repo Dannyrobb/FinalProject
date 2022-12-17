@@ -86,33 +86,33 @@ export default function ShareBusiness(props) {
   };
 
   return (
-    <div>
+    <div style={{ display: "inline" }}>
       <IconButton variant="outlined" onClick={handleClickOpen}>
-        <ShareIcon />
+        <ShareIcon style={{ color: "#73BAB1" }} />
       </IconButton>
       <BootstrapDialog onClose={handleClose} aria-labelledby="customized-dialog-title" open={open} sx={{ width: "auto" }}>
         <BootstrapDialogTitle id="customized-dialog-title" onClose={handleClose}>
-          Share
+          Share Business
         </BootstrapDialogTitle>
-        <DialogContent dividers>
-          <RedditShareButton sx={{ m: 1 }} onClick={handleClose} url={`http://localhost:3000/business/${props.id}`}>
+        <DialogContent dividers sx={{ width: 500, display: "flex", flexDirection: "row", justifyContent: "space-evenly" }}>
+          <RedditShareButton sx={{ m: 1 }} onClick={handleClose} url={`https://shareit.herokuapp.com/business/${props.id}`}>
             <RedditIcon size={40} />
           </RedditShareButton>
-          <FacebookShareButton sx={{ m: 1 }} onClick={handleClose} url={`http://localhost:3000/business/${props.id}`}>
+          <FacebookShareButton sx={{ m: 1 }} onClick={handleClose} url={`https://shareit.herokuapp.com/business/${props.id}`}>
             <FacebookIcon size={40} />
           </FacebookShareButton>
 
-          <LinkedinShareButton sx={{ m: 1 }} onClick={handleClose} url={`http://localhost:3000/business/${props.id}`}>
+          <LinkedinShareButton sx={{ m: 1 }} onClick={handleClose} url={`https://shareit.herokuapp.com/business/${props.id}`}>
             <LinkedinIcon size={40} />
           </LinkedinShareButton>
-          <WhatsappShareButton sx={{ m: 1 }} onClick={handleClose} url={`http://localhost:3000/business/${props.id}`}>
+          <WhatsappShareButton sx={{ m: 1 }} onClick={handleClose} url={`https://shareit.herokuapp.com/${props.id}`}>
             <WhatsappIcon size={40} />
           </WhatsappShareButton>
-          <TelegramShareButton sx={{ m: 1 }} onClick={handleClose} url={`http://localhost:3000/business/${props.id}`}>
+          <TelegramShareButton sx={{ m: 1 }} onClick={handleClose} url={`https://shareit.herokuapp.com/${props.id}`}>
             <TelegramIcon size={40} />
           </TelegramShareButton>
 
-          <VKShareButton sx={{ m: 1 }} onClick={handleClose} url={`http://localhost:3000/business/${props.id}`}>
+          <VKShareButton sx={{ m: 1 }} onClick={handleClose} url={`https://shareit.herokuapp.com/business/${props.id}`}>
             <VKIcon size={40} />
           </VKShareButton>
         </DialogContent>

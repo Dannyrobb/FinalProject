@@ -29,7 +29,7 @@ export default function ReviewCard(props) {
         <Box sx={{ display: "flex", flexWrap: "wrap" }}>
           <div>
             {" "}
-            <Card sx={{ maxWidth: 420, minWidth: 420, height: 270, m: 1, borderRadius: 9 }}>
+            <Card sx={{ width: 400, height: 290, m: 1, borderRadius: 9 }}>
               <CardHeader
                 avatar={
                   <Avatar
@@ -63,11 +63,11 @@ export default function ReviewCard(props) {
               <Rating name="read-only" value={props.review.rating} readOnly size="medium" />
 
               <CardContent sx={{ display: "flex", padding: 0 }}>
-                <Box sx={{ minHeight: 100, display: "flex", paddingLeft: 1 }}>
+                <Box sx={{ height: 120, display: "flex", paddingLeft: 1 }}>
                   <Typography variant={props.review.review.length > 50 ? "h7" : "h5"}>{props.review.review}</Typography>
                 </Box>
               </CardContent>
-              <CardActions sx={{ display: "flex", justifyContent: "flex-start", padding: 0 }}>
+              <CardActions sx={{ display: "flex", justifyContent: "flex-start" }}>
                 <IconButton component={Link} to={`/business/${props.review.business_id}`}>
                   <StoreIcon />
                 </IconButton>

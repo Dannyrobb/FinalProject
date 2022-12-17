@@ -60,7 +60,7 @@ export default function ReviewReplyDialog(props) {
 
   return (
     <div>
-      <Button variant="contained" sx={{ backgroundColor: "#2b6777 ", height: 20, marginTop: 2 }} onClick={handleClickOpen}>
+      <Button variant="contained" sx={{ backgroundColor: "#2b6777 ", marginTop: 2, marginLeft: 2 }} onClick={handleClickOpen}>
         replied
       </Button>
       <Dialog

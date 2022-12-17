@@ -33,6 +33,9 @@ const Businesses = db.define(
     customer_contact_phone: {
       type: DataTypes.STRING,
     },
+    activeSince: {
+      type: DataTypes.INTEGER,
+    },
     // id: {
     //   type: DataTypes.INTEGER,
     //   primaryKey: true,

@@ -7,9 +7,11 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import Box from "@mui/material/Box";
+import EditIcon from "@mui/icons-material/Edit";
 import Rating from "@mui/material/Rating";
 import Typography from "@mui/material/Typography";
 import { useState, useEffect } from "react";
+import { IconButton } from "@mui/material";
 const EditBusinessInfo = (props) => {
   const [updated, setUpdated] = useState();
 
@@ -56,9 +58,9 @@ const EditBusinessInfo = (props) => {
     <div>
       {props.title == "description" && (
         <>
-          <Button variant="outlined" onClick={handleClickOpen}>
-            Update {props.title}
-          </Button>
+          <IconButton onClick={handleClickOpen} style={{ display: "inline" }}>
+            <EditIcon />
+          </IconButton>
           <Dialog open={open} onClose={handleClose}>
             <DialogTitle>Update {props.title}</DialogTitle>
             <DialogContent>
@@ -70,6 +72,9 @@ const EditBusinessInfo = (props) => {
                 id="name"
                 label="Review"
                 fullWidth
+                multiline
+                sx={{ width: 300 }}
+                minRows={10}
                 variant="standard"
                 onChange={(e) => {
                   setUpdated(e.target.value);

@@ -96,13 +96,16 @@ const NavigationBar = (props) => {
                 label="Locations"
                 onChange={(e) => setSearchLocation(e.target.value)}
               >
-                <MenuItem value={null}>Please Choose A City</MenuItem>
+                <MenuItem value={null} selected>
+                  All Cities
+                </MenuItem>
 
                 {locations.length > 1 &&
                   locations.map((item) => {
                     return <MenuItem value={item.location_id}>{item.location_name}</MenuItem>;
                   })}
               </Select>
+
               <Button
                 disabled={searchQueryGlobal.length > 0 ? false : true}
                 sx={{ fontSize: 16, marginLeft: 2, color: "#52ab98", fontWeight: "550" }}
@@ -114,17 +117,36 @@ const NavigationBar = (props) => {
               </Button>
             </Form>
             <Nav className="p-2 ms-auto">
-              <Button sx={{ color: "#52ab98", fontWeight: "550" }} component={Link} to="/categories">
+              <Button
+                sx={{
+                  color: "#52ab98",
+                  fontWeight: "550",
+                  "&:hover": {
+                    color: "#52ab98",
+                  },
+                }}
+                component={Link}
+                to="/categories"
+              >
                 Categories
               </Button>
               {accessToken && (
                 <>
                   {jwt_decode(accessToken).role == "user" ? (
                     <>
-                      <Button sx={{ color: "#52ab98" }} component={Link} to={`/userpage/${jwt_decode(accessToken).id}`}>
+                      <Button sx={{ color: "#52ab98", fontWeight: "bold" }} component={Link} to={`/userpage/${jwt_decode(accessToken).id}`}>
                         {jwt_decode(accessToken).email}
                       </Button>
-                      <Button variant="contained" sx={{ backgroundColor: "#52ab98" }} onClick={logout}>
+                      <Button
+                        variant="contained"
+                        sx={{
+                          backgroundColor: "#52ab98",
+                          "&:hover": {
+                            color: "#52ab98",
+                          },
+                        }}
+                        onClick={logout}
+                      >
                         Logout
                       </Button>
                     </>
@@ -133,7 +155,16 @@ const NavigationBar = (props) => {
                       <Button sx={{ color: "#52ab98" }} component={Link} to={`/business/${jwt_decode(accessToken).id}`}>
                         {jwt_decode(accessToken).email}
                       </Button>
-                      <Button variant="contained" sx={{ backgroundColor: "#52ab98" }} onClick={logout}>
+                      <Button
+                        variant="contained"
+                        sx={{
+                          backgroundColor: "#52ab98",
+                          "&:hover": {
+                            color: "#52ab98",
+                          },
+                        }}
+                        onClick={logout}
+                      >
                         Logout
                       </Button>
                     </div>
@@ -143,10 +174,31 @@ const NavigationBar = (props) => {
 
               {!accessToken && (
                 <>
-                  <Button sx={{ color: "#52ab98", fontWeight: "550" }} component={Link} to="/login">
+                  <Button
+                    sx={{
+                      color: "#52ab98",
+                      fontWeight: "550",
+                      "&:hover": {
+                        color: "#52ab98",
+                      },
+                    }}
+                    component={Link}
+                    to="/login"
+                  >
                     Login
                   </Button>
-                  <Button variant="contained" sx={{ backgroundColor: "#52ab98" }} component={Link} to="/register">
+                  <Button
+                    variant="contained"
+                    sx={{
+                      backgroundColor: "#52ab98",
+                      "&:hover": {
+                        backgroundColor: "#52ab98",
+                        color: "white",
+                      },
+                    }}
+                    component={Link}
+                    to="/register"
+                  >
                     Register
                   </Button>
                 </>
